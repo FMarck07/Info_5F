@@ -59,10 +59,16 @@ ON p.id_paziente = v.id_paziente
 where v.pressione_min > 80;
 
 -- media pressione di bianchi luca
-select avg((v.pressione_min + v.pressione_max) / 2) as mediaPressione
+select p.cognome, p.nome, avg(v.pressione_min) as mediaPressionemin
 from pazienti p
 join visite v
-where nome = 'Luca' and cognome = 'Bianchi';
+where p.nome = 'Luca' and p.cognome = 'Bianchi';
+
+-- media della pressione di tutti
+select avg(v.pressione_min) as mediaPressionemin
+from pazienti p
+join visite v;
+
 
 DROP TABLE visite;
 DROP TABLE pazienti;
