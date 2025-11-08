@@ -35,6 +35,7 @@ VALUES
 
 INSERT INTO visite (data_visita, pressione_min, pressione_max, peso, glicemia, id_paziente)
 VALUES 
+('2025-11-08', 70, 175, 80.00, 120, 1);
 ('2024-03-15', 70, 175, 80.00, 120, 1),
 ('2024-06-10', 75, 175, 85.00, 125, 1),
 ('2020-05-22', 92, 180, 95.00, 145, 2),
@@ -62,12 +63,59 @@ where v.pressione_min > 80;
 select p.cognome, p.nome, avg(v.pressione_min) as mediaPressionemin
 from pazienti p
 join visite v
+ON p.id_paziente = v.id_paziente
 where p.nome = 'Luca' and p.cognome = 'Bianchi';
 
 -- media della pressione di tutti
-select avg(v.pressione_min) as mediaPressionemin
+select p.cognome, p.nome, avg(v.pressione_min) as mediaPressionemin
 from pazienti p
-join visite v;
+join visite v
+ON p.id_paziente = v.id_paziente
+group by p.cognome;
+
+select p.cognome, p.nome, v.data_visita 
+from pazienti p
+join visite v
+ON p.id_paziente = v.id_paziente
+where v.data_visita = '2025-01-09';
+
+select p.cognome, p.nome, v.data_visita 
+from pazienti p
+join visite v
+ON p.id_paziente = v.id_paziente
+where v.data_visita = CURDATE();
+
+select p.cognome, p.nome, v.data_visita 
+from pazienti p
+join visite v
+ON p.id_paziente = v.id_paziente
+where year(v.data_visita) = YEAR(CURDATE());
+
+select p.cognome, p.nome, v.data_visita 
+from pazienti p
+join visite v
+ON p.id_paziente = v.id_paziente
+where v.data_visita like '2025-%-%';
+
+select p.cognome, p.nome, v.data_visita 
+from pazienti p
+join visite v
+ON p.id_paziente = v.id_paziente
+where month(v.data_visita) = month(CURDATE());
+
+select p.cognome, p.nome, v.data_visita 
+from pazienti p
+join visite v
+ON p.id_paziente = v.id_paziente
+where v.data_visita like '%-11-%';
+
+-- Visualizzare i pazienti che hanno una differenza tra pressione max e
+-- pressione minima inferiore a 40
+SELECT p.cognome, p.nome, v.pressione_min, v.pressione_max
+FROM pazienti p
+JOIN visite v ON p.id_paziente = v.id_paziente
+WHERE (v.pressione_max - v.pressione_min) < 40;
+
 
 
 DROP TABLE visite;
