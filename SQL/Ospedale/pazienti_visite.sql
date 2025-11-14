@@ -1,5 +1,4 @@
-CREATE DATABASE IF NOT EXISTS Ospedale;
-USE Ospedale;
+create DATABASE francesco_marchetto_clinica;
 
 -- Creazione tabella pazienti
 CREATE TABLE pazienti (
@@ -26,6 +25,7 @@ CREATE TABLE visite (
 -- Inserimento pazienti
 INSERT INTO pazienti (nome, cognome, anno_nascita, provincia, asl)
 VALUES 
+('Fabio', 'c', '1985-04-10', 'Milano', 'ASL-MI01'),
 ('Luca', 'Bianchi', '1985-04-10', 'Milano', 'ASL-MI01'),
 ('Marco', 'Rossi', '1990-07-23', 'Napoli', NULL),
 ('Anna', 'Verdi', '1978-12-01', 'Roma', 'ASL-RM05'),
@@ -35,7 +35,7 @@ VALUES
 
 INSERT INTO visite (data_visita, pressione_min, pressione_max, peso, glicemia, id_paziente)
 VALUES 
-('2025-11-08', 70, 175, 80.00, 120, 1);
+('2025-11-08', 70, 175, 80.00, 120, 1),
 ('2024-03-15', 70, 175, 80.00, 120, 1),
 ('2024-06-10', 75, 175, 85.00, 125, 1),
 ('2020-05-22', 92, 180, 95.00, 145, 2),
@@ -116,7 +116,14 @@ FROM pazienti p
 JOIN visite v ON p.id_paziente = v.id_paziente
 WHERE (v.pressione_max - v.pressione_min) < 40;
 
+select nome, cognome, v.data_visita
+from pazienti p
+inner join visite v on p.id_paziente = v.id_paziente;
 
+select nome, cognome, v.data_visita
+from pazienti p
+left join visite v 
+on p.id_paziente = v.id_paziente;
 
 DROP TABLE visite;
 DROP TABLE pazienti;
