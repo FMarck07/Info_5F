@@ -25,6 +25,7 @@ CREATE TABLE visite (
 -- Inserimento pazienti
 INSERT INTO pazienti (nome, cognome, anno_nascita, provincia, asl)
 VALUES 
+('Alessio', 'Poli', '1995-05-30', 'Roma', NULL);
 ('Fabio', 'c', '1985-04-10', 'Milano', 'ASL-MI01'),
 ('Luca', 'Bianchi', '1985-04-10', 'Milano', 'ASL-MI01'),
 ('Marco', 'Rossi', '1990-07-23', 'Napoli', NULL),
@@ -35,6 +36,7 @@ VALUES
 
 INSERT INTO visite (data_visita, pressione_min, pressione_max, peso, glicemia, id_paziente)
 VALUES 
+('2025-03-15', 58, 170, 95.00, 145, NULL);
 ('2025-11-08', 70, 175, 80.00, 120, 1),
 ('2024-03-15', 70, 175, 80.00, 120, 1),
 ('2024-06-10', 75, 175, 85.00, 125, 1),
@@ -45,6 +47,7 @@ VALUES
 ('2025-02-02', 65, 165, 85.00, 118, 4),
 ('2025-09-05', 62, 165, 70.00, 110, 4),
 ('2025-03-15', 58, 170, 95.00, 145, 6);
+
 
 -- Query di verifica
 -- join usata per unire due tabelle 
@@ -118,13 +121,79 @@ WHERE (v.pressione_max - v.pressione_min) < 40;
 
 select nome, cognome, v.data_visita
 from pazienti p
-inner join visite v on p.id_paziente = v.id_paziente;
+inner join visite v 
+on p.id_paziente = v.id_paziente;
 
 select nome, cognome, v.data_visita
 from pazienti p
 left join visite v 
 on p.id_paziente = v.id_paziente;
 
+select nome, cognome, v.data_visita
+from pazienti p
+right join visite v 
+on p.id_paziente = v.id_paziente;
+
+
+select nome, cognome, v.data_visita
+from pazienti p
+left join visite v
+on p.id_paziente = v.id_paziente
+UNION
+select nome, cognome, v.data_visita
+from pazienti p
+right join visite v
+on p.id_paziente = v.id_paziente;
+
+
+select count (data_visita) as count
+from(
+	select nome, cognome, v.data_visita
+	from pazienti p
+	left join visite v
+	on p.id_paziente = v.id_paziente
+	UNION
+	select nome, cognome, v.data_visita
+	from pazienti p
+	right join visite v
+	on p.id_paziente = v.id_paziente
+)as count;
+
+
+select count(v.data_visita) as count
+from pazienti p
+right join visite v
+on p.id_paziente = v.id_paziente;
+
+select count(v.data_visita) as count
+from visite v;
+
+select count(*) as count
+from visite v
+where v.id_paziente is NULL;
+
+-- pazienti senza visita
+select count(*) as count
+from pazienti p
+left join visite v
+on p.id_paziente = v.id_paziente
+where v.data_visita is NULL;
+
+
+-- visite senza pazienti
+select count(*) as count
+from pazienti p
+left join visite v
+on p.id_paziente = v.id_paziente
+where v.id_visita is NULL;
+
+
+DROP TABLE visite;
+DROP TABLE pazienti;
+
+
+
+-- ESERCIZI
 select nome, cognome, anno_nascita
 from pazienti;
 
@@ -204,5 +273,5 @@ Limit 1;
 
 
 
-DROP TABLE visite;
-DROP TABLE pazienti;
+
+
