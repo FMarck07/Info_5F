@@ -271,7 +271,74 @@ group by p.nome, p.cognome
 order by v.pressione_max DESC
 Limit 1;
 
+-- Recuperare tutte le informazioni sui pazienti e le relative visite
+select * from pazienti p join visite v on p.id_paziente = v.id_paziente ;
+
+-- Calcolare la media della glicemia per ogni paziente
+select nome, cognome, avg(v.glicemia) as media
+from pazienti p
+join visite v
+on p.id_paziente = v.id_paziente
+group by nome, cognome;
+
+-- Pazienti con pressione minima superiore a 90
+select nome, cognome, v.pressione_min 
+from pazienti p
+join visite v
+on p.id_paziente = v.id_paziente
+where v.pressione_min > 90
+group by nome, cognome;
+
+-- Trovare i pazienti senza visita
+select nome, cognome
+from pazienti p
+left join visite v
+on p.id_paziente = v.id_paziente
+where v.id_visita is NULL;
+
+-- Pazienti che hanno una visita a marzo 2025
+select nome, cognome, v.data_visita 
+from pazienti p
+join visite v
+on p.id_paziente = v.id_paziente
+where MONTH(v.data_visita) = 3 and YEAR(v.data_visita) = 2025;
+
+-- Calcolare il peso medio di tutti i pazienti
+select nome, cognome, avg(v.peso) as pesoMedio
+from pazienti p
+join visite v
+on p.id_paziente = v.id_paziente
+group by nome, cognome;
 
 
+-- Pazienti con glicemia maggiore di 120
+select nome, cognome, v.glicemia 
+from pazienti p
+join visite v
+on p.id_paziente = v.id_paziente
+where v.glicemia > 120
+group by nome, cognome;
 
+-- Pazienti di Milano con visita in 2025
+select nome, cognome, provincia, v.data_visita 
+from pazienti p
+join visite v
+on p.id_paziente = v.id_paziente
+where YEAR(v.data_visita) = 2025 and p.provincia = 'Milano';
+
+-- Pazienti con la pressione massima più bassa
+select nome, cognome, v.pressione_max
+from pazienti p
+join visite v
+on p.id_paziente = v.id_paziente
+order by v.pressione_max DESC
+limit 1;
+
+-- Pazienti con peso maggiore di 85 kg e glicemia sopra i 130
+select nome, cognome, v.peso, v.glicemia
+from pazienti p
+join visite v
+on p.id_paziente = v.id_paziente
+where v.peso > 85 and v.glicemia > 130
+group by nome, cognome;
 
