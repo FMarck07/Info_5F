@@ -125,5 +125,84 @@ from pazienti p
 left join visite v 
 on p.id_paziente = v.id_paziente;
 
+select nome, cognome, anno_nascita
+from pazienti;
+
+select glicemia
+from visite
+where glicemia > 130;
+
+-- Mostrare nome, cognome e provincia dei pazienti che appartengono alla provincia di Milano.
+select nome, cognome, provincia
+from pazienti
+where provincia = 'Milano';
+
+-- Elencare i pazienti che non hanno un codice ASL (asl = NULL).
+select nome, cognome, asl
+from pazienti
+where asl is NULL;
+
+-- Mostrare tutte le colonne della tabella visite ordinate dalla data più recente alla meno recente.
+select *
+from visite v
+order by v.data_visita DESC; -- ASC
+
+-- Mostrare nome, cognome e glicemia di ogni visita effettuata.
+select nome, cognome, v.glicemia
+from pazienti p
+join visite v
+on v.id_paziente = p.id_paziente;
+
+-- Mostrare nome, cognome e peso delle visite con peso maggiore di 90 kg.
+select nome, cognome, v.peso
+from pazienti p
+join visite v
+on v.id_paziente = p.id_paziente
+where peso > 90;
+
+-- Visualizzare solo i pazienti che hanno almeno una visita.
+select nome, cognome
+from pazienti p
+join visite v
+on v.id_paziente = p.id_paziente;
+
+-- Visualizzare tutti i pazienti, anche quelli senza visite.
+select nome, cognome
+from pazienti p
+left join visite v
+on v.id_paziente = p.id_paziente;
+
+-- Mostrare le visite dei pazienti nati dopo il 1985.
+select nome, cognome, p.anno_nascita 
+from pazienti p
+join visite v
+on v.id_paziente = p.id_paziente
+where p.anno_nascita > 1985;
+
+-- Calcolare la pressione minima media di ogni paziente.
+select nome, cognome, avg(v.pressione_min) as mediaPressione
+from pazienti p
+join visite v
+on v.id_paziente = p.id_paziente
+group by p.nome, p.cognome;
+
+-- Calcolare la glicemia massima registrata per ogni paziente.
+select nome, cognome, MAX(v.glicemia) as MAXGlicemia
+from pazienti p
+join visite v
+on v.id_paziente = p.id_paziente
+group by p.nome, p.cognome;
+
+-- Trovare il paziente che ha la pressione massima più alta di tutte.
+select nome, cognome, v.pressione_max
+from pazienti p
+join visite v
+on v.id_paziente = p.id_paziente
+group by p.nome, p.cognome
+order by v.pressione_max DESC
+Limit 1;
+
+
+
 DROP TABLE visite;
 DROP TABLE pazienti;
