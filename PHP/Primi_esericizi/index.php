@@ -24,4 +24,40 @@ $index = array_search(20, $vet);
 echo "vettore posizione: ",$index. " con numero ", $vet[1]. '<br>';
 $n = count($vet);
 echo $n;
-//for($i = 0; )
+echo '<br>', "Visualizzo elementi del vettore con ciclo for",'<br>';
+for($i = 0; $i<$n; $i++)
+    echo '<br>'. $vet[$i]. '<br>';
+echo "Visualizzo elementi del vettore con print_r",'<br>';
+print_r($vet);
+echo '<br>', "Visualizzo elementi del vettore con var_dump",'<br>';
+var_dump($vet);
+$vet2 = [10, 20, 30, "a", 'b'];
+echo '<br>';
+var_dump($vet2); // i vettori possono contenere tipi diversi di variabili
+echo '<br>', "Aggiungo elemento alla fine del vet",'<br>';
+array_push($vet2, 50);
+array_push($vet2, 2);
+echo implode(" ", $vet2);
+$vet2[] = 60;
+echo '<br>';
+echo implode(" ", $vet2);
+echo '<br>', "Cancello elemento alla fine del vettore",'<br>';
+array_pop($vet2);
+echo '<br>';
+echo implode(" ", $vet2);
+echo '<br>', "Cancello elemento all'inzio del vettore",'<br>';
+array_shift($vet2);
+echo '<br>';
+echo implode(" ", $vet2);
+if(in_array(20, $vet2))
+    echo '<br>', "Elemento presente";
+else echo '<br>', "Non presente";
+echo '<br>', "Ordino elementi del vettore",'<br>';
+sort($vet2);
+echo implode(" ", $vet2);
+$studente = [
+    "nome" => "Marco",
+    "eta" => 18
+];
+echo '<br>';
+echo $studente['nome'];
