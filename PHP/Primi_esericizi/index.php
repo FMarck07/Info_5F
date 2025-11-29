@@ -61,3 +61,50 @@ $studente = [
 ];
 echo '<br>';
 echo $studente['nome'];
+$studente["cognome" ] = "Vis";
+
+foreach ($studente as $studente_key => $valore) {
+    echo "$studente_key: $valore<br>";
+}
+
+echo "Associativo", '<br>';
+$studenti =[
+    "studenti1"=>[
+        "nome" => "Marco",
+        "voto" => 7,
+    ],
+    "studenti2"=>[
+        "nome" => "Nicola",
+        "voto" => 8,
+    ]
+];
+echo $studenti["studenti2"]["nome"]. '<br>', "voto ";
+echo $studenti["studenti2"]["voto"];
+
+$config = [
+    "database" => "mio_db",
+    "utente" => "admin",
+    "password" => "12345",
+];
+
+
+
+$chiavi = [];
+
+if (array_key_exists("nome", $studente))
+    echo '<br>', "La chiave esiste nell'array.";
+else
+    $chiavi = array_keys($studente);
+
+var_dump($chiavi);
+echo '<br>';
+$valori = array_values($studente);
+var_dump($valori);
+echo '<br>';
+echo "$valori[1]";
+if (array_key_exists("eta", $studente))
+    echo '<br>', "La chiave esiste nell'array. Età: ";
+else
+    $chiavi = array_keys($studente);
+
+echo $studente['eta'];
