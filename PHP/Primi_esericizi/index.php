@@ -128,3 +128,20 @@ echo '<br>';
 if($var3 == 0)
     echo "Hanno valore uguale";
 else echo "NON hanno valore uguale";
+echo '<br>';
+$a = null;
+$var5 = 0;
+// restituisce true se la variabile esiste e false se non esiste o è null
+if(isset($a))
+    echo "esiste";
+else echo "non esiste";
+echo '<br>';
+
+if(is_null($a))
+    echo "è null";
+else echo "non è null";
+echo '<br>';
+
+if(empty($var5))
+    echo "è vuota";
+else echo "non è vuota";
