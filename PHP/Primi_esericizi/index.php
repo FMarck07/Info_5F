@@ -145,3 +145,14 @@ echo '<br>';
 if(empty($var5))
     echo "è vuota";
 else echo "non è vuota";
+
+$index2 = array_search(20, $vet);
+echo "vettore posizione: ",$index2. " con numero ", $vet[1]. '<br>';
+echo '<br>';
+var_dump($vet2);
+echo '<br>';
+if(in_array(20, $vet2))
+    echo "Presente ";
+else echo "NON presente";
+
+
