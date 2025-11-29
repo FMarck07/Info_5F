@@ -108,3 +108,23 @@ else
     $chiavi = array_keys($studente);
 
 echo $studente['eta'];
+
+echo next ($studente);
+$var1 = 5;
+$var2 = '5';
+// == confronta solo il valore
+echo '<br>';
+if($var1 == $var2)
+    echo "Hanno valore uguale";
+else echo "NON hanno valore uguale";
+// === confronta anche il tipo
+echo '<br>';
+if($var1 === $var2)
+    echo "sono uguali anche nel tipo";
+else echo "NON sono uguali anche nel tipo";
+
+$var3 = 'ciao';
+echo '<br>';
+if($var3 == 0)
+    echo "Hanno valore uguale";
+else echo "NON hanno valore uguale";
