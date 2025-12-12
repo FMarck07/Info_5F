@@ -1,72 +1,73 @@
 <?php
-// PHP String Functions - Esempi Completi con <br>
+// Funzioni per le Stringhe in PHP - Esempi Completi con <br>
 
-// strlen()
-echo strlen("Hello") . "<br>"; // 5
+// strlen() - Calcola la lunghezza della stringa
+echo strlen("Ciao") . "<br>"; // 4
 
-// strrev()
-echo strrev("Hello") . "<br>"; // "olleH"
+// strrev() - Inverte la stringa
+echo strrev("Ciao") . "<br>"; // "oaiC"
 
-// strtolower()
-echo strtolower("HELLO") . "<br>"; // "hello"
+// strtolower() - Converte tutto in minuscolo
+echo strtolower("CIAO") . "<br>"; // "ciao"
 
-// strtoupper()
-echo strtoupper("hello") . "<br>"; // "HELLO"
+// strtoupper() - Converte tutto in maiuscolo
+echo strtoupper("ciao") . "<br>"; // "CIAO"
 
-// ucfirst()
-echo ucfirst("hello world") . "<br>"; // "Hello world"
+// ucfirst() - Prima lettera maiuscola
+echo ucfirst("ciao mondo") . "<br>"; // "Ciao mondo"
 
-// ucwords()
-echo ucwords("hello world") . "<br>"; // "Hello World"
+// ucwords() - Prima lettera di ogni parola maiuscola
+echo ucwords("ciao mondo") . "<br>"; // "Ciao Mondo"
 
-// trim()
-echo trim("  hello  ") . "<br>"; // "hello"
+// trim() - Rimuove spazi vuoti dall'inizio e dalla fine
+echo trim("  ciao  ") . "<br>"; // "ciao"
 
-// ltrim()
-echo ltrim("  hello") . "<br>"; // "hello"
+// ltrim() - Rimuove spazi vuoti solo dall'inizio (Left)
+echo ltrim("  ciao") . "<br>"; // "ciao"
 
-// rtrim()
-echo rtrim("hello  ") . "<br>"; // "hello"
+// rtrim() - Rimuove spazi vuoti solo dalla fine (Right)
+echo rtrim("ciao  ") . "<br>"; // "ciao"
 
-// explode()
-print_r(explode(",", "a,b,c"));
+// explode() - Divide una stringa in un array (basandosi su un separatore)
+print_r(explode(",", "mela,pera,banana"));
 echo "<br>";
 
-// implode()
-echo implode("-", ["a","b","c"]) . "<br>"; // "a-b-c"
+// implode() - Unisce gli elementi di un array in una stringa
+echo implode("-", ["mela","pera","banana"]) . "<br>"; // "mela-pera-banana"
 
-// str_replace()
-echo str_replace("world", "PHP", "Hello world") . "<br>"; // "Hello PHP"
+// str_replace() - Sostituisce una porzione di stringa
+echo str_replace("mondo", "PHP", "Ciao mondo") . "<br>"; // "Ciao PHP"
 
-// substr()
-echo substr("Hello", 1, 3) . "<br>"; // "ell"
+// substr() - Estrae una parte della stringa (stringa, inizio, lunghezza)
+echo substr("Ciao", 1, 3) . "<br>"; // "iao"
 
-// strpos()
-echo strpos("Hello world", "o") . "<br>"; // 4
+// strpos() - Trova la posizione della PRIMA occorrenza (inizia da 0)
+echo strpos("Ciao mondo", "o") . "<br>"; // 3 (C-i-a-o)
 
-// strrpos()
-echo strrpos("Hello world", "o") . "<br>"; // 7
+// strrpos() - Trova la posizione dell'ULTIMA occorrenza
+echo strrpos("Ciao mondo", "o") . "<br>"; // 9 (l'ultima 'o' di mond'o')
 
-// strstr()
-echo strstr("Hello world", "world") . "<br>"; // "world"
+// strstr() - Trova la prima occorrenza e restituisce il resto della stringa
+echo strstr("Ciao mondo", "mondo") . "<br>"; // "mondo"
 
-// stristr()
-echo stristr("Hello world", "WORLD") . "<br>"; // "world"
+// stristr() - Come strstr, ma case-insensitive (ignora maiuscole/minuscole)
+echo stristr("Ciao mondo", "MONDO") . "<br>"; // "mondo"
 
-// sprintf()
-$formatted = sprintf("My age is %d", 25);
-echo $formatted . "<br>"; // "My age is 25"
+// sprintf() - Restituisce una stringa formattata
+$formattato = sprintf("La mia età è %d", 25);
+echo $formattato . "<br>"; // "La mia età è 25"
 
-// printf()
-printf("Price: %.2f<br>", 9.5); // outputs: "Price: 9.50"
+// printf() - Stampa direttamente una stringa formattata
+printf("Prezzo: %.2f<br>", 9.5); // output: "Prezzo: 9.50"
 
-// number_format()
-echo number_format(12345.678, 2) . "<br>"; // "12,345.68"
+// number_format() - Formatta un numero con le migliaia raggruppate
+// Nota: In Italia usiamo la virgola per i decimali e il punto per le migliaia
+echo number_format(12345.678, 2, ',', '.') . "<br>"; // "12.345,68"
 
-// addslashes()
-echo addslashes("O'Reilly") . "<br>"; // "O\'Reilly"
+// addslashes() - Aggiunge backslash davanti ai caratteri speciali (utile per DB)
+echo addslashes("L'Aquila") . "<br>"; // "L\'Aquila"
 
-// stripslashes()
-echo stripslashes("O\'Reilly") . "<br>"; // "O'Reilly"
+// stripslashes() - Rimuove i backslash aggiunti da addslashes
+echo stripslashes("L\'Aquila") . "<br>"; // "L'Aquila"
 
 ?>
