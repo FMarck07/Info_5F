@@ -13,7 +13,7 @@ $db = new PDO(
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ]
 );
-/*
+
 $query = 'SELECT * FROM studenti';
 
 try{
@@ -31,7 +31,7 @@ try{
     $stmt ->closeCursor();
 }catch (PDOException $e){
     echo "A DB error occured.";
-}*/
+}
 /*
 $studentename = 'Marco';
 // mettere antonio qui al posto di :name è sbagliato
@@ -70,7 +70,7 @@ try{
     echo "A DB error occured";
 };*/
 
-
+/*
 $query = 'SELECT * FROM studenti';
 
 try{
@@ -89,4 +89,52 @@ try{
 }catch (PDOException $e){
     echo "A DB error occured.";
 };
+/*
+$query = 'UPDATE studenti SET media = :media WHERE nome = :name';
+
+try {
+    $stmt = $db->prepare($query);
+
+    $stmt->bindValue(':name', 'Lucy', PDO::PARAM_STR);
+    $stmt->bindValue(':media', 8, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    if ($stmt->rowCount() === 0) {
+        echo "No rows were updated";
+    } else {
+        echo "Update successful!";
+    }
+
+    $stmt->closeCursor();
+
+} catch (PDOException $e) {
+    echo "A DB error occurred.";
+    echo '<br>';
+}
+*/
+
+
+// DELETE
+
+$query = 'DELETE FROM studenti WHERE nome = :name';
+
+try {
+    $stmt = $db->prepare($query);
+
+    $stmt->bindValue(':name', 'Lucy', PDO::PARAM_STR);
+    $stmt->execute();
+
+    if ($stmt->rowCount() === 0) {
+        echo "Nessuna riga eliminata";
+    } else {
+        echo "Cancellazione avvenuta con successo!";
+        $stmt->closeCursor();
+    }
+
+
+
+} catch (PDOException $e) {
+    echo "A DB error occurred.";
+}
 
