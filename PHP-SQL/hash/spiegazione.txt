@@ -1,0 +1,17 @@
+Un algoritmo di hashing è una funzione che prende un testo, per esempio una password, e lo trasforma in una stringa di caratteri completamente diversa chiamata **hash**.
+
+Per esempio, se la password è *ciao123*, il risultato non sarà più leggibile ma diventerà qualcosa come:
+
+`$2y$10$Xk9sdfkjsdf8sdf8sdf...`
+
+Questo valore è lungo, sembra casuale e soprattutto **non può essere riconvertito** nella password originale. L’hashing infatti è un processo **unidirezionale**: si può passare da password a hash, ma non da hash a password.
+
+Un’altra caratteristica importante è che anche un piccolo cambiamento nella password produce un hash totalmente diverso. Se cambio anche solo un numero, per esempio da *ciao123* a *ciao124*, il risultato sarà completamente differente. Questo rende il sistema molto sicuro.
+
+Quando si salvano le password in un database, non si salva mai la password in chiaro, ma solo il suo hash. In questo modo, anche se qualcuno riuscisse ad accedere al database, non potrebbe leggere le password degli utenti.
+
+Per aumentare ancora la sicurezza si utilizza il **salt**. Il salt è una stringa casuale che viene generata automaticamente e aggiunta alla password prima di creare l’hash. Questo significa che anche se due utenti scelgono la stessa password, i loro hash saranno diversi, perché il salt sarà differente. Il salt viene memorizzato direttamente dentro l’hash finale.
+
+Durante il login il sistema funziona così: l’utente inserisce la sua password, il programma recupera dal database l’hash salvato e utilizza una funzione come `password_verify()`. Questa funzione prende la password inserita, usa il salt contenuto nell’hash salvato, rifà il calcolo e confronta il risultato. Se i due valori corrispondono, il login è corretto.
+
+In sintesi, l’hash della password è un codice alfanumerico generato da un algoritmo di hashing. Include un salt casuale, che viene aggiunto alla password prima della trasformazione e viene memorizzato all’interno dell’hash stesso per garantire maggiore sicurezza. In questo modo le password non vengono mai salvate in chiaro e il sistema risulta molto più protetto.
