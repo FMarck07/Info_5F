@@ -1,0 +1,19 @@
+Le variabili globali in PHP sono quelle definite al di fuori di una funzione, ad esempio $message = "Ciao";. Tuttavia, all’interno di una funzione queste variabili non sono accessibili automaticamente. Se provi a usare echo $message; dentro una funzione, otterrai un errore perché la variabile non è visibile in quello scope. Per accedere a una variabile globale dentro una funzione, devi dichiararla con global $message; oppure usare l’array speciale $GLOBALS['message'].
+
+La differenza fondamentale è che le variabili normali non sono visibili ovunque senza usare global, mentre le variabili superglobali sono disponibili in ogni parte del codice senza dichiarazioni particolari.
+
+Le variabili superglobali sono array associativi creati automaticamente da PHP. Iniziano con $_ e contengono dati provenienti dall’esterno, come input dell’utente o informazioni sul server. Sono accessibili ovunque nel codice, comprese le funzioni.
+
+Ad esempio, $_GET contiene i dati passati tramite URL. Se l’indirizzo è index.php?nome=Marco, puoi leggere $_GET['nome'] e otterrai il valore "Marco". Questo è utile per filtri di ricerca, parametri nelle pagine o per passare identificativi nei link.
+
+$_POST invece contiene i dati inviati da un form con metodo POST. Se il form ha un campo <input type="text" name="nome">, in PHP puoi leggere il valore con $_POST['nome']. Questo metodo è usato per operazioni come login, registrazione o per inviare dati sensibili perché i dati non appaiono nell’URL.
+
+$_SERVER è un array che contiene informazioni sulla richiesta e sul server. Ad esempio, $_SERVER['REQUEST_METHOD'] indica se la richiesta è di tipo GET o POST, $_SERVER['PHP_SELF'] restituisce il nome del file PHP in esecuzione, mentre $_SERVER['HTTP_HOST'] fornisce il nome del dominio. È utile per gestire il comportamento della pagina in base al tipo di richiesta o per avere dati tecnici sul server.
+
+I metodi HTTP più comuni nelle richieste al server sono:
+
+GET: usato per richiedere dati o una pagina. I dati (se presenti) vengono passati nell’URL, come in ?id=10. È il metodo più comune quando navighi normalmente in un sito.
+
+POST: usato per inviare dati al server, tipicamente tramite un form. I dati vengono inviati nel corpo della richiesta e non sono visibili nell’URL. Serve per operazioni che modificano dati, come inserimenti, login o registrazioni.
+
+quey string
