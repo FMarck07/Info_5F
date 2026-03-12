@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+.navbar {
+    background-color: black;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.navbar a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: yellow;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+    background: white;
+}
+
+th, td {
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: lightgray;
+}
+
+form {
+    border: 1px solid gray;
+    padding: 15px;
+    width: 400px;
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 5px;
+}
+
+input, select {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+.msg-ok {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.msg-err {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
