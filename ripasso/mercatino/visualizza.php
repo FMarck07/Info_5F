@@ -62,7 +62,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         "Spedizione" => $_POST["spedizione"] ?? "",
         "prodotti" => implode(", ", $_POST["prodotti"] ?? []),
         "giorno" => $_POST["giorno"] ?? "",
-        "prezzo" => $totale
+        "prezzo" => $totale,
+        "pass" => "cioa"
     ];
 }else{
     http_response_code(400);
@@ -103,12 +104,16 @@ $intestazione = array_keys($prodotti[0]);
     <table>
         <tr>
             <?php foreach ($ordine_cliente as $chiave => $valore):?>
-                <th><?= $chiave?></th>
+                <?php if ($chiave != "pass"):?>
+                    <th><?= $chiave?></th>
+                <?php endif;?>
             <?php endforeach;?>
         </tr>
         <tr>
             <?php foreach ($ordine_cliente as $chiave => $valore):?>
-                <td><?= $valore?></td>
+                <?php if ($chiave != "pass"):?>
+                    <td><?= $valore?></td>
+                <?php endif;?>
             <?php endforeach;?>
         </tr>
     </table>
