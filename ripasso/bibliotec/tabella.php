@@ -31,6 +31,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         "libri" => implode(", ", $_POST["libri"] ?? []),
         "consegna" => $_POST["consegna"]
     ];
+}else{
+    http_response_code(400);
+    $messaggio = "errore";
+    include "error.php";
+    exit();
 }
 $utenti[] = $nuovo_utente;
 
