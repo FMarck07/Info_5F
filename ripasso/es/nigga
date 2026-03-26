@@ -1,0 +1,53 @@
+<?php
+// 1. Definiamo l'array base
+$corsi = [
+    [ "id" => 1, "titolo" => "PHP Base", "categoria" => "Programmazione", "ore" => 20, "prezzo" => 150.00 ],
+    [ "id" => 2, "titolo" => "Design UI/UX", "categoria" => "Grafica", "ore" => 15, "prezzo" => 120.50 ],
+    [ "id" => 3, "titolo" => "Sviluppo Web Avanzato", "categoria" => "Programmazione", "ore" => 40, "prezzo" => 300.00 ],
+    [ "id" => 4, "titolo" => "Marketing Digitale", "categoria" => "Marketing", "ore" => 25, "prezzo" => 200.00 ],
+    [ "id" => 5, "titolo" => "JavaScript per Front-end", "categoria" => "Programmazione", "ore" => 30, "prezzo" => 220.00 ]
+];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nuovo_corso = [
+        "id" => count($corsi) + 1,
+        "titolo" => $_POST["titolo"],
+        "categoria" => $_POST["categoria"],
+        "ore" => $_POST["ore"],
+        "prezzo" => $_POST["prezzo"]
+    ];
+    $corsi[] = $nuovo_corso;
+}
+
+$intestazioni = array_keys($corsi[0]);
+?>
+
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabella Corsi</title>
+</head>
+<body>
+<nav>
+    <a href="aggiungi_corso.php">Aggiungi Corso</a> |
+    <a href="manipolazione.php">Gestione e Manipolazione Dati</a>
+</nav>
+<br>
+
+<table> <tr>
+        <?php foreach ($intestazioni as $value): ?>
+            <th><?= $value ?></th>
+        <?php endforeach; ?>
+    </tr>
+
+    <?php foreach ($corsi as $value): ?>
+        <tr>
+            <?php foreach ($value as $cappella): ?>
+                <td><?= $cappella ?></td>
+            <?php endforeach; ?>
+        </tr>
+    <?php endforeach; ?>
+</table>
+</body>
+</html>
