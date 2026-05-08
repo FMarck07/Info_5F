@@ -1,10 +1,10 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    $nome = trim($_GET['nome'] ?? '');
-    $cognome = trim($_GET['cognome'] ?? '');
-    $numero_tessera = $_GET['numero_tessera'] ?? '';
-    $data_iscrizione = $_GET['data_iscrizione'] ?? '';
-    $password = $_GET['password'] ?? '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nome = trim($_POST['nome'] ?? '');
+    $cognome = trim($_POST['cognome'] ?? '');
+    $numero_tessera = $_POST['numero_tessera'] ?? '';
+    $data_iscrizione = $_POST['data_iscrizione'] ?? '';
+    $password = $_POST['password'] ?? '';
 
     echo $nome . '<br>';
     echo $cognome . '<br>';

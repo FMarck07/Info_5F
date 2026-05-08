@@ -16,4 +16,10 @@ GET: usato per richiedere dati o una pagina. I dati (se presenti) vengono passat
 
 POST: usato per inviare dati al server, tipicamente tramite un form. I dati vengono inviati nel corpo della richiesta e non sono visibili nell’URL. Serve per operazioni che modificano dati, come inserimenti, login o registrazioni.
 
-quey string
+Una query string è una parte dell'URL che contiene informazioni aggiuntive che vengono passate al server web. Viene aggiunta all'URL dopo il punto di domanda (?), e i vari parametri all'interno della query string sono separati da un simbolo di &.
+
+? indica l'inizio della query string.
+
+Ogni parametro è formato da una coppia chiave-valore, separata da un simbolo di uguale (=).
+
+Ogni coppia chiave-valore è separata da un simbolo di &.
